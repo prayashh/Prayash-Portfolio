@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prayash Sharma</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background: #f6f6f6;
+            color: #111;
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        /* GLOBAL SPACING */
+        section {
+            padding: 80px 0;
+        }
+
+        .container {
+            max-width: 1100px;
+            width: 100%;
+            margin: auto;
+            padding: 0 20px;
+        }
+
+        /* NAV */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 60px;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 20px;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #555;
+            font-size: 14px;
+        }
+
+        .resume-btn {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: #555;
+            transition: color 0.3s, opacity 0.3s;
+        }
+
+        .resume-btn:hover {
+            color: #111;
+            opacity: 0.8;
+        }
+
+        .resume-btn:hover .download-icon {
+            fill: #111;
+        }
+
+        .download-icon {
+            width: 14px;
+            height: 14px;
+            fill: #555;
+            transition: fill 0.3s;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 22px;
+            height: 2px;
+            background: #333;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 80px 0;
+            /* Add padding to stop content from hitting edges on varied screens */
+        }
+
+        .hero img {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 5px;
+        }
+
+        .hero p b {
+            color: #111;
+        }
+
+        .marquee-container {
+            margin: 30px auto;
+            max-width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+            -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+            mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+        }
+
+        .marquee-content {
+            display: inline-flex;
+            animation: scroll-left 15s linear infinite;
+            color: #555;
+            font-size: 15px;
+        }
+
+        .marquee-text {
+            padding-right: 15px;
+        }
+
+        @keyframes scroll-left {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .headline {
+            font-size: 42px;
+            font-weight: 700;
+            margin: 20px auto 0;
+            max-width: 800px;
+            text-align: center;
+        }
+
+        /* ABOUT */
+        .about {
+            margin-top: 40px;
+        }
+
+        .about h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .about p {
+            color: #555;
+            line-height: 1.7;
+        }
+
+        /* WORK */
+        .work-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 30px;
+        }
+
+        .case-card {
+            background: white;
+            border-radius: 24px;
+            padding: 30px;
+            display: flex;
+            gap: 30px;
+            align-items: center;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid rgba(0, 0, 0, 0.7);
+        }
+
+        .case-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        .case-img {
+            flex: 1 1 50%;
+        }
+
+        .case-img img {
+            width: 100%;
+            height: auto;
+            max-height: 400px;
+            /* added a max crop so it stays neat */
+            object-fit: cover;
+            border-radius: 12px;
+            display: block;
+        }
+
+        .case-text {
+            flex: 1 1 50%;
+        }
+
+        .case-text h3 {
+            margin-bottom: 15px;
+        }
+
+        .case-text ul {
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .case-text li {
+            margin-bottom: 8px;
+        }
+
+        .case-text p {
+            color: #666;
+        }
+
+        /* MOBILE */
+        @media (max-width: 700px) {
+            header {
+                padding: 15px 20px;
+            }
+
+            nav {
+                display: none;
+                position: absolute;
+                top: 60px;
+                right: 20px;
+                background: white;
+                padding: 20px;
+                border-radius: 10px;
+                flex-direction: column;
+                z-index: 1000;
+                box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+                border: 1px solid #eee;
+                min-width: 200px;
+                align-items: flex-start;
+            }
+
+            nav.active {
+                display: flex;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hero {
+                height: auto;
+                padding: 60px 0;
+            }
+
+            .marquee-content {
+                font-size: 13px;
+            }
+
+            .headline {
+                font-size: 32px;
+            }
+
+            .case-card {
+                flex-direction: column;
+                padding: 20px;
+                border-radius: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .headline {
+                font-size: 26px;
+            }
+
+            .work-title,
+            .about h2 {
+                font-size: 24px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .case-card {
+                padding: 15px;
+                border-radius: 12px;
+            }
+
+            .marquee-content {
+                font-size: 12px;
+            }
+
+            section {
+                padding: 50px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">Prayash Sharma</div>
+
+        <nav id="navMenu">
+            <a href="#about">About</a>
+            <a href="#work">Work</a>
+
+            <!-- DOWNLOAD RESUME -->
+            <a href="assets/resume/PrayashSharmaResume.pdf" download class="resume-btn">
+                <svg class="download-icon" viewBox="0 0 24 24">
+                    <path d="M12 16l4-5h-3V4h-2v7H8l4 5zm-6 2h12v2H6z" />
+                </svg>
+                Download Resume
+            </a>
+        </nav>
+
+        <div class="hamburger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="container">
+            <img src="assets/images/profile.jpeg" alt="">
+            <p>Hi! I'm <b>Prayash Sharma</b></p>
+            <p>Product / UX Designer</p>
+
+            <div class="marquee-container">
+                <div class="marquee-content">
+                    <span class="marquee-text">Interaction Design 🔍 • Research & Data-driven solutions 📊 • Flutter
+                        Developer 📱 • </span>
+                    <span class="marquee-text">Interaction Design 🔍 • Research & Data-driven solutions 📊 • Flutter
+                        Developer 📱 • </span>
+                </div>
+            </div>
+
+            <div class="headline">
+                I design products that drive business impact while delivering meaningful user experiences.
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+        <div class="container about">
+            <h2>About Me</h2>
+
+            <p>
+                I started my journey as a Flutter developer, building real-world applications and understanding how
+                products function behind the scenes.
+                Over time, I realized that great products are not just built — they are designed with intention.
+
+                This led me into UI/UX design, where I focus on solving real problems, simplifying complexity, and
+                crafting intuitive experiences.
+
+                Today, I combine development knowledge with design thinking to create products that deliver both user
+                satisfaction and business impact.
+            </p>
+        </div>
+    </section>
+
+    <!-- WORK -->
+    <section id="work">
+        <div class="container">
+
+            <div class="work-title">UX Case Study</div>
+
+            <div class="case-card" onclick="openCase()">
+
+                <div class="case-img">
+                    <img src="assets/images/Case1Thumbmail.png" alt="">
+                </div>
+
+                <div class="case-text">
+                    <h3>Business Impact</h3>
+
+                    <ul>
+                        <li>Increase booking enquiries by 70%</li>
+                        <li>Lower drop-out rate by 34%</li>
+                        <li>14% increase in conversion</li>
+                    </ul>
+
+                    <p>
+                        What started as a simple development project eventually turned into one of my most valuable UX
+                        learning experiences — teaching me how real user behavior, business constraints, marketing data,
+                        and design decisions all connect to shape product outcomes.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById("navMenu").classList.toggle("active");
+        }
+
+        function openCase() {
+            window.location.href = "case1.html";
+        }
+    </script>
+
+</body>
+
+</html>
