@@ -4,40 +4,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Case Study</title>
-
+    <title>Travel Website Redesign – UX Case Study</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=DM+Serif+Display:ital@0;1&family=Roboto:wght@400;500;700&family=Poppins:wght@700&display=swap"
+        rel="stylesheet">
     <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bg: #F8F4F3;
+            --surface: #ffffff;
+            --accent: #0e3832;
+            --accent-light: #e8f0eb;
+            --text: #1a1a1a;
+            --text-muted: #555;
+            --text-light: #888;
+            --border: #ddd;
+            --tag-bg: #e9e5df;
+            --red: #d04a35;
+            --blue: #3a5fa0;
+            --radius: 12px;
+            --font-body: 'DM Sans', sans-serif;
+            --font-display: 'DM Serif Display', serif;
+        }
+
         body {
-            font-family: Arial;
-            padding: 40px;
-            max-width: 800px;
-            margin: auto;
-            background-color: #f8f4f3;
+            font-family: var(--font-body);
+            background: var(--bg);
+            color: var(--text);
+            font-size: 16px;
+            line-height: 1.65;
         }
 
-        h1 {
-            margin-bottom: 20px;
-        }
-
-        .responsive-img {
-            max-width: 100%;
-            width: 100%;
-            height: auto;
-            object-fit: contain;
-            display: block;
-            margin: 0 auto 20px auto;
-            border-radius: 8px;
-            /* Optional touch to make it look a bit better */
-        }
-
+        /* ── APPBAR ── */
         .appbar {
             display: flex;
             align-items: center;
             padding: 16px 24px;
-            background: #0e3832;
+            background: var(--accent);
             border-radius: 16px;
             box-shadow: 0 8px 24px rgba(14, 56, 50, 0.2);
-            margin-bottom: 0;
+            margin: 20px auto;
+            max-width: 760px;
             color: #ffffff;
         }
 
@@ -78,69 +92,644 @@
         @media (max-width: 600px) {
             body {
                 padding: 0;
-                font-size: 16px;
-            }
-
-            h1 {
-                font-size: 24px;
             }
 
             .appbar {
-                margin-bottom: 0;
+                margin: 0;
                 border-radius: 0 0 16px 16px;
-                padding: 16px 20px;
+                padding: 16px;
             }
 
-            .fab-up {
-                bottom: 20px;
-                right: 20px;
+            .hero {
+                padding: 40px 16px 32px;
+            }
+
+            .hero-mockup-img {
+                width: 100%;
+            }
+
+            .meta-block {
+                padding: 0 16px;
+                margin-bottom: 32px;
+            }
+
+            .section {
+                padding: 32px 16px;
+            }
+
+            .divider {
+                margin: 0 16px;
+            }
+
+            .constraint-box,
+            .solution-box {
+                flex-direction: column;
+                padding: 24px 12px;
+                gap: 16px;
+                text-align: center;
+            }
+
+            .constraint-card {
+                width: 100%;
             }
         }
 
-        .fab-up {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 50px;
-            height: 50px;
-            background-color: #0e3832;
-            color: white;
-            border: none;
-            border-radius: 50%;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-            cursor: pointer;
+        /* ── HERO ── */
+        .hero {
+            text-align: center;
+            padding: 60px 24px 48px;
+            max-width: 760px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 700;
+            font-size: clamp(26px, 4vw, 42px);
+            line-height: 1.2;
+            color: var(--text);
+            margin-bottom: 32px;
+        }
+
+        .hero h1 em {
+            font-style: italic;
+            color: var(--accent);
+        }
+
+        /* hero mockup strip */
+        .hero-mockup-img {
+            width: 90%;
+            height: auto;
+            border-radius: var(--radius);
+            margin: 20px auto 0;
+            display: block;
+            transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .hero-mockup-img:hover {
+            transform: scale(1.03);
+        }
+
+        .mockup-card {
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, .1);
+        }
+
+        .mockup-card.desktop {
+            width: 300px;
+            height: 190px;
+        }
+
+        .mockup-card.mobile {
+            width: 90px;
+            height: 190px;
+        }
+
+        .placeholder-img {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #e8ede9 0%, #c8d9cc 100%);
             display: flex;
-            justify-content: center;
             align-items: center;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(20px);
-            transition: all 0.3s ease;
-            z-index: 1000;
+            justify-content: center;
+            color: #8aab94;
+            font-size: 11px;
+            font-weight: 500;
+            text-align: center;
+            padding: 8px;
         }
 
-        .fab-up.show {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
+        /* ── ROLE & TOOLS ── */
+        .meta-block {
+            max-width: 760px;
+            margin: 0 auto 40px;
+            padding: 0 24px;
         }
 
-        .fab-up:hover {
-            background-color: #165249;
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+        .meta-block h3 {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: .08em;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+
+        .meta-block p {
+            font-size: 16px;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+        .meta-block p strong {
+            color: var(--text);
+        }
+
+        .tools-row {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 4px;
+        }
+
+        .tool-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background: transparent;
+            border: 1px solid transparent;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            cursor: default;
+        }
+
+        .tool-icon:hover {
             transform: translateY(-2px);
+            border-color: #ddd;
+            background: #ffffff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
         }
 
-        .fab-up svg {
-            width: 24px;
-            height: 24px;
-            fill: white;
+        .tool-icon img {
+            width: 26px;
+            height: 26px;
+            object-fit: contain;
+        }
+
+        /* ── DIVIDER ── */
+        .divider {
+            border: none;
+            border-top: 1px solid var(--border);
+            margin: 0 24px;
+        }
+
+        /* ── SECTIONS ── */
+        .section {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+
+        .section+.section {
+            padding-top: 0;
+        }
+
+        .section-label {
+            font-size: 22px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            margin-top: 64px;
+            margin-bottom: 32px;
+            color: var(--text);
+        }
+
+        .section>.section-label:first-child,
+        .section>h2.section-label:first-of-type {
+            margin-top: 0;
+            margin-bottom: 14px;
+        }
+
+        .body-text {
+            font-size: 16px;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        .body-text strong {
+            color: var(--text);
+        }
+
+        .body-text+.body-text {
+            margin-top: 10px;
+        }
+
+        /* ── CONSTRAINT BOX ── */
+        .constraint-box {
+            background: #FFC7C7;
+            border-radius: 24px;
+            padding: 12px;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            margin-top: 16px;
+            outline: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .constraint-card {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 180px;
+            height: 180px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            flex-shrink: 0;
+            box-sizing: border-box;
+        }
+
+        .constraint-card .old-price {
+            font-size: 18px;
+            color: #1E1E1E;
+            text-decoration: line-through;
+            font-weight: 500;
+            opacity: 0.6;
+        }
+
+        .constraint-card .new-price {
+            font-size: 32px;
+            font-weight: 700;
+            color: #000;
+            margin-top: 4px;
+        }
+
+        .constraint-text {
+            flex: 1;
+            font-size: 16px;
+            color: black;
+            line-height: 1.6;
+        }
+
+
+
+        .solution-box {
+            background: #E8F5E9;
+            border-radius: 24px;
+            padding: 12px;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            margin-top: 16px;
+            outline: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+
+
+        ul.bullet-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 8px;
+        }
+
+        ul.bullet-list li {
+            font-size: 16px;
+            color: var(--text-muted);
+            padding-left: 16px;
+            position: relative;
+            margin-bottom: 4px;
+            line-height: 1.65;
+        }
+
+        ul.bullet-list li strong {
+            color: var(--text);
+        }
+
+        ul.bullet-list li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        ul.bullet-list li strong {
+            color: var(--text);
+        }
+
+        /* ── ILLUSTRATION PLACEHOLDER ── */
+        .illus-placeholder {
+            background: #ede9e3;
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #aaa;
+            font-size: 12px;
+            font-weight: 500;
+            text-align: center;
+            padding: 16px;
+            margin: 20px 0;
+        }
+
+        .illus-full {
+            width: 100%;
+            height: 220px;
+        }
+
+        .illus-tall {
+            width: 100%;
+            height: 280px;
+        }
+
+        .illus-short {
+            width: 100%;
+            height: 160px;
+        }
+
+        .illus-med {
+            width: 100%;
+            height: 200px;
+        }
+
+        .illus-row {
+            display: flex;
+            gap: 14px;
+            margin: 20px 0;
+        }
+
+        .illus-row .illus-placeholder {
+            flex: 1;
+            margin: 0;
+            height: 200px;
+        }
+
+        /* ── INSIGHT SECTION ── */
+        .insight-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin: 20px 0;
+        }
+
+        @media (max-width: 580px) {
+            .insight-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* stat pills */
+        .stat-pills {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+
+        .stat-pill {
+            background: var(--accent);
+            color: #fff;
+            border-radius: 8px;
+            padding: 12px 20px;
+            text-align: center;
+            min-width: 80px;
+            flex: 1;
+        }
+
+        .stat-pill .val {
+            font-size: 22px;
+            font-weight: 700;
+            display: block;
+        }
+
+        .stat-pill .lbl {
+            font-size: 11px;
+            opacity: .85;
+        }
+
+        .stat-pill.outline {
+            background: transparent;
+            border: 1.5px solid var(--accent);
+            color: var(--accent);
+        }
+
+        /* funnel */
+        .funnel-wrap {
+            margin: 20px 0;
+        }
+
+        .funnel-step {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 6px;
+        }
+
+        .funnel-bar-wrap {
+            flex: 1;
+        }
+
+        .funnel-bar {
+            min-height: 34px;
+            background: var(--accent);
+            border-radius: 4px;
+            opacity: .85;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 4px 12px;
+            color: #fff;
+            font-size: 12px;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        .funnel-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            min-width: 90px;
+            text-align: right;
+        }
+
+        /* ── WIREFRAME GRID ── */
+        .wf-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        @media (max-width: 580px) {
+            .wf-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .wf-card {
+            background: #e8e4dc;
+            border-radius: 8px;
+            height: 130px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            color: #aaa;
+            text-align: center;
+            padding: 8px;
+        }
+
+        /* ── FLOW CHART ── */
+        .flow-chart-placeholder {
+            background: #ede9e3;
+            border-radius: var(--radius);
+            width: 100%;
+            height: 260px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            color: #aaa;
+            margin: 20px 0;
+            text-align: center;
+            padding: 16px;
+        }
+
+        /* ── STRATEGIC UX ── */
+        .ux-label {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-muted);
+            margin: 24px 0 10px;
+            text-transform: uppercase;
+            letter-spacing: .05em;
+        }
+
+        .design-screens {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 14px;
+        }
+
+        @media (max-width: 520px) {
+            .design-screens {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .screen-card {
+            background: #e8e4dc;
+            border-radius: 8px;
+            height: 110px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            color: #aaa;
+            text-align: center;
+            padding: 6px;
+        }
+
+        .problem-box {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            margin: 12px 0;
+        }
+
+        .problem-screen {
+            background: #e8e4dc;
+            border-radius: 8px;
+            width: 110px;
+            min-width: 110px;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            color: #aaa;
+            text-align: center;
+            padding: 6px;
+        }
+
+        .problem-note {
+            background: #fff5f5;
+            border-left: 3px solid var(--red);
+            border-radius: 6px;
+            padding: 12px 14px;
+            flex: 1;
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* final design strip */
+        .final-strip {
+            display: flex;
+            gap: 10px;
+            margin: 12px 0;
+            flex-wrap: wrap;
+        }
+
+        .final-card {
+            background: #e8e4dc;
+            border-radius: 8px;
+            flex: 1;
+            min-width: 70px;
+            height: 130px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            color: #aaa;
+            text-align: center;
+            padding: 6px;
+        }
+
+        /* ── RESULTS BANNER ── */
+        .results-banner {
+            background: var(--accent);
+            border-radius: var(--radius);
+            padding: 28px;
+            margin: 32px 0 0;
+            color: #fff;
+        }
+
+        .results-banner h2 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 20px;
+            margin-bottom: 12px;
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        @media (max-width: 520px) {
+            .results-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .result-item {
+            text-align: center;
+        }
+
+        .result-item .big {
+            font-size: 28px;
+            font-weight: 700;
+            font-family: var(--font-display);
+        }
+
+        .result-item .sm {
+            font-size: 12px;
+            opacity: .8;
+            margin-top: 2px;
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            text-align: center;
+            padding: 48px 24px;
+            font-size: 13px;
+            color: var(--text-light);
         }
     </style>
 </head>
 
 <body>
 
+    <!-- APPBAR -->
     <div class="appbar">
         <a href="index.html" class="back-btn">
             <svg class="back-icon" viewBox="0 0 24 24">
@@ -150,33 +739,340 @@
         </a>
     </div>
 
+    <!-- HERO -->
+    <section class="hero">
+        <h1><span style="color: var(--accent);">Increase of 70% in booking enquiries after redesigning </span><span
+                style="color: rgba(0, 0, 0, 0.8); font-weight: 400;">a travel
+                website into a high-converting lead funnel.</span></h1>
 
-    <img src="./assets/images/case1/Desktop.svg" alt="Guide Sikkim Redesign Interface" class="responsive-img">
+        <!-- Hero mockup strip -->
+        <img src="assets/images/case1/Mockup%20Case%201.png" alt="Travel Website Redesign Mockup"
+            class="hero-mockup-img">
+    </section>
+
+    <!-- META -->
+    <div class="meta-block">
+        <h3>My Role</h3>
+        <p>
+            <strong>• UX Designer</strong> — Used insights from Google Ads campaigns and Google Ads Analytics to
+            identify user drop-off points and redesign the website’s user experience, information architecture, and
+            inquiry flow.<br>
+            <strong>• Performance Marketer & Developer</strong> — Managed Google Ads campaigns, developed the website,
+            and deployed the final product.
+        </p>
+        <h3>Tool Used</h3>
+        <div class="tools-row">
+            <div class="tool-icon" title="Figma"><img src="assets/images/case1/Tool%20used%20logo/figma%20logo.jpg"
+                    alt="Figma"></div>
+            <div class="tool-icon" title="draw.io"><img src="assets/images/case1/Tool%20used%20logo/drawio%20logo.jpg"
+                    alt="draw.io"></div>
+            <div class="tool-icon" title="ChatGPT"><img src="assets/images/case1/Tool%20used%20logo/chatgpt%20logo.jpg"
+                    alt="ChatGPT"></div>
+            <div class="tool-icon" title="Antigravity"><img
+                    src="assets/images/case1/Tool%20used%20logo/antigravity%20logo.jpg" alt="Antigravity"></div>
+            <div class="tool-icon" title="Claude"><img src="assets/images/case1/Tool%20used%20logo/claude%20logo.jpg"
+                    alt="Claude"></div>
+            <div class="tool-icon" title="Gemini"><img src="assets/images/case1/Tool%20used%20logo/gemini%20logo.jpg"
+                    alt="Gemini"></div>
+            <div class="tool-icon" title="GitHub"><img src="assets/images/case1/Tool%20used%20logo/github%20logo.jpg"
+                    alt="GitHub"></div>
+            <div class="tool-icon" title="Google Docs"><img
+                    src="assets/images/case1/Tool%20used%20logo/google%20docs%20logo.jpg" alt="Google Docs"></div>
+            <div class="tool-icon" title="Vercel"><img src="assets/images/case1/Tool%20used%20logo/vercel%20logo.jpg"
+                    alt="Vercel"></div>
+        </div>
+        <h3 style="margin-top: 16px;">Project Duration — <span
+                style="font-size: 16px; font-family: var(--font-body); font-weight: 700; text-transform: none; letter-spacing: 0; color: var(--text);">2
+                Weeks</span></h3>
+    </div>
 
 
-    <button id="fab-up" class="fab-up" onclick="scrollToTop()">
-        <svg viewBox="0 0 24 24">
-            <path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z" />
-        </svg>
-    </button>
+    <!-- PROBLEM STATEMENT -->
+    <section class="section">
+        <h2 class="section-label">Problem Statement</h2>
+        <p class="body-text">
+            <strong>Users struggle to discover tour packages</strong> and trust the travel website due to cluttered
+            layouts, unclear information hierarchy, and poor conversion-focused design. As a result, users leave without
+            making inquiries, forcing the agency to rely heavily on paid advertisements and <strong>increasing
+                CAC</strong>(Customer Acquisition Cost).
+        </p>
+    </section>
 
-    <script>
-        const fab = document.getElementById('fab-up');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) {
-                fab.classList.add('show');
-            } else {
-                fab.classList.remove('show');
-            }
-        });
+    <!-- OBJECTIVE -->
+    <section class="section">
+        <h2 class="section-label">Objective</h2>
+        <ul class="bullet-list">
+            <li><strong>Improve package discovery</strong> and user trust through a clear, intuitive, and
+                conversion-focused user experience.</li>
+            <li>Increase booking inquiries while <strong>reducing CAC</strong> (Customer Acquisition Cost).</li>
+        </ul>
+    </section>
 
-        function scrollToTop() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        }
-    </script>
+    <!-- PROJECT ORIGIN -->
+    <section class="section">
+        <h2 class="section-label">Project Origin</h2>
+        <p class="body-text">
+            Last year, <strong>in April 2025</strong>, a Sikkim-based travel agency, Guide Sikkim Tours and Travels,
+            approached us with a challenge — <strong>build a website</strong> that could turn their business into a
+            strong online
+            presence.
+        </p>
+
+        <img src="assets/images/case1/story1.webp" alt="Client conversation"
+            style="width: 100%; height: auto; border-radius: var(--radius); margin: 20px 0; display: block;">
+
+        <p class="body-text">
+            We took the project thinking it would be easy money — after all, for computer science students like us,
+            building websites felt like the simplest thing to do. Within just a few weeks, <strong>we delivered the
+                website</strong>
+            exactly the way they had asked for it.
+        </p>
+
+        <img src="assets/images/case1/story2.webp" alt="Team delivering the website"
+            style="width: 100%; height: auto; border-radius: var(--radius); margin: 20px 0; display: block;">
+
+        <p class="body-text">
+            But in <strong>September 2025</strong>, the client came back with a concern — the website wasn’t bringing in
+            any real
+            traffic. It had become nothing more than a piece of social proof. They wanted to turn it into something
+            bigger: a proper lead-generation funnel. So they asked us a new question — what if we <strong>run Google
+                Ads</strong> for
+            them and used the website to bring in quality travel leads?
+        </p>
+
+        <img src="assets/images/case1/story3.webp" alt="Client requesting Google Ads setup"
+            style="width: 100%; height: auto; border-radius: var(--radius); margin: 20px 0; display: block;">
+
+        <p class="body-text">
+            Compared to building the website, running ads felt even easier to us — so without thinking twice, we
+            <strong>accepted the offer</strong>.
+        </p>
+
+        <img src="assets/images/case1/story4.webp" alt="Team accepting the challenge"
+            style="width: 100%; height: auto; border-radius: var(--radius); margin: 20px 0; display: block;">
+    </section>
+
+    <!-- FIRST GOOGLE ADS INSIGHT -->
+    <section class="section">
+        <h2 class="section-label">First Google Ads Insight</h2>
+
+        <div class="insight-grid">
+            <img src="assets/images/case1/map%20case%201.png" alt="Map - Traffic source by geography"
+                style="width: 100%; height: auto; display: block; margin: 0;">
+            <div style="padding: 4px 0;">
+                <ul class="bullet-list">
+                    <li>Major traffic came from West Bengal, Odisha, Jharkhand, Assam, Bihar, and other Eastern states.</li>
+                    <li><strong>West Bengal contributed nearly 60%</strong> of total traffic and inquiries.</li>
+                    <li><strong>Helped us optimize</strong> the experience <strong>for the target regional audience.</strong></li>
+                </ul>
+            </div>
+        </div>
+
+        <p class="body-text" style="margin-top:18px;">
+            From the <strong>campaign insights</strong>, inquiry patterns, and <strong>discussions with the
+                client</strong>, we <strong>identified</strong> that <strong>most users</strong> from the target
+            demographics were <strong>looking</strong> for <strong>honeymoon packages</strong>,
+            <strong>budget-friendly trips</strong>, and <strong>family tours</strong>. Based on these findings,
+            <strong>we created dedicated travel packages</strong> tailored to each user segment
+            <strong>to improve relevance and conversion.</strong>
+        </p>
+
+        <div class="insight-grid" style="margin-top: 18px;">
+            <img src="assets/images/case1/gender%201%20case%201.png" alt="Demographic Insight 1"
+                style="width: 100%; height: auto; display: block;">
+            <img src="assets/images/case1/gender%202%20case%201.png" alt="Demographic Insight 2"
+                style="width: 100%; height: auto; display: block;">
+        </div>
+
+        <div class="insight-grid" style="margin-top: 18px; align-items: center;">
+            <img src="assets/images/case1/mobile%20usage%20case%201.png" alt="Mobile Usage Statistics"
+                style="width: 100%; height: auto; display: block; margin: 0;">
+            <div style="padding: 4px 0;">
+                <p class="body-text" style="margin: 0;">
+                    Here, we discovered that more than <strong>99% of users</strong> were <strong>browsing</strong> through
+                    <strong>mobile devices</strong>. This highlighted the <strong>need to design</strong> a highly responsive
+                    mobile experience while <strong>maintaining</strong> clear <strong>package discoverability</strong> and
+                    <strong>easy navigation.</strong>
+                </p>
+            </div>
+        </div>
+
+        <!-- stat pills -->
+        <div class="stat-pills">
+            <div class="stat-pill" style="min-width: 130px;"><span class="val">2500+</span><span
+                    class="lbl">Impressions</span></div>
+            <div class="stat-pill outline"><span class="val">300+</span><span class="lbl">Clicks</span></div>
+            <div class="stat-pill" style="min-width: 130px;"><span class="val">20-30</span><span class="lbl">Booking
+                    Enquiry</span></div>
+            <div class="stat-pill outline"><span class="val">10%</span><span class="lbl">Conversion</span></div>
+        </div>
+
+        <!-- funnel -->
+        <div class="funnel-wrap" style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+            <div class="funnel-bar" style="width:100%; min-width: 150px;">2500+ Impressions</div>
+            <div class="funnel-bar" style="width:75%;">300+ Clicks</div>
+            <div class="funnel-bar" style="width:50%; min-width: 150px;">20-30 Booking Enquiry</div>
+            <div class="funnel-bar" style="width:25%; min-width: 110px;">10% Conversion</div>
+        </div>
+
+        <p class="body-text">
+            Based on these insights, I realized that <strong>improving</strong> the website's <strong>user
+                experience</strong> could significantly <strong>increase booking inquiries</strong> and
+            <strong>conversion rates</strong>. A more intuitive and user-focused experience would also improve ad
+            performance, <strong>helping the agency</strong> <strong>generate higher revenue </strong>with better
+            marketing efficiency.
+        </p>
+    </section>
+
+    <!-- FLOW CHART -->
+    <section class="section">
+        <h2 class="section-label">Flow Chart</h2>
+        <img src="assets/images/case1/Flow%20chart%20case1.svg" alt="Flow Chart"
+            style="width: 100%; height: auto; border-radius: var(--radius); margin-top: 10px; display: block;">
+    </section>
+
+    <!-- WIREFRAME OF REDESIGN -->
+    <section class="section">
+        <h2 class="section-label">Wireframe of Redesign</h2>
+        <img src="assets/images/case1/wireframe%20%20redesign%20case1.svg" alt="Wireframe Redesign"
+            style="width: 100%; height: auto; border-radius: var(--radius); margin-top: 10px; display: block;">
+    </section>
+
+    <!-- STRATEGIC UX DECISIONS -->
+    <section class="section">
+        <h2 class="section-label" style="font-size: 32px; font-weight: 800; margin-bottom: 48px;">Strategic UX Decisions</h2>
+
+        <h2 class="section-label">Initial Design</h2>
+        <div class="design-screens">
+            <img src="assets/images/case1/initial%20design11.png" alt="Initial Home"
+                style="width: 100%; height: auto; display: block;">
+            <img src="assets/images/case1/initial%20design21.png" alt="Initial Packages"
+                style="width: 100%; height: auto; display: block;">
+            <img src="assets/images/case1/initial%20design31.png" alt="Initial Detail"
+                style="width: 100%; height: auto; display: block;">
+        </div>
+
+        <h2 class="section-label">Problem With Initial Design</h2>
+        <img src="assets/images/case1/problem%20with%20initial%20design%20case%201.svg" alt="Problematic Layout"
+            style="width: 100%; height: auto; display: block;">
+
+        <h2 class="section-label">Final Design</h2>
+        <img src="assets/images/case1/final%20design%20case%201.svg" alt="Final Design Screens"
+            style="width: 100%; height: auto; display: block;">
+
+        <h2 class="section-label">Added Filters to Simplify Decision-Making</h2>
+        <img src="assets/images/case1/filter%20case%201.svg" alt="Added Filter Button"
+            style="width: 100%; height: auto; display: block;">
+
+        <h2 class="section-label">What if the User Didn’t Find the Package of their Category?</h2>
+        <img src="assets/images/case1/user%20confusion%20state%20case%201.svg" alt="User Confusion State"
+            style="width: 100%; height: auto; display: block;">
+        <img src="assets/images/case1/custom%20package%20available%20case%201.svg" alt="Custom Package Available"
+            style="width: 100%; height: auto; display: block;">
+
+        <h2 class="section-label">How Single CTA on Error State Impact User Flow</h2>
+        <img src="assets/images/case1/cta%201%20case%201.svg" alt="CTA Analysis 1"
+            style="width: 100%; height: auto; display: block;">
+        <img src="assets/images/case1/cta%202%20case%201.svg" alt="CTA Analysis 2"
+            style="width: 100%; height: auto; display: block;">
+
+        <h2 class="section-label">Decision of Increasing Interaction Cost !</h2>
+        <img src="assets/images/case1/increasing%20interaction%20cost%20case%201.svg" alt="Interaction Cost Analysis"
+            style="width: 100%; height: auto; display: block;">
+        <img src="assets/images/case1/ads%20friendly.svg" alt="Ads Friendly Design"
+            style="width: 100%; height: auto; display: block;">
+
+        <h2 class="section-label">Not Every User Wants to Explore Everything</h2>
+        <img src="assets/images/case1/aware%20user.svg" alt="Aware User Analysis"
+            style="width: 100%; height: auto; display: block;">
+
+        <h2 class="section-label">What If Users Have Unclear Intent and Click Randomly?</h2>
+        <img src="assets/images/case1/unaware%20user.svg" alt="Unaware User Analysis"
+            style="width: 100%; height: auto; display: block;">
+
+
+    </section>
+
+    <!-- PRICING STRATEGY -->
+    <section class="section" style="padding-bottom: 80px;">
+        <h2 class="section-label">The Psychology Behind Pricing</h2>
+        <p class="body-text">
+            <strong>We couldn't focus only on user experience while ignoring business goals</strong>, so we explored a
+            more creative
+            pricing approach that balanced user trust with better conversion opportunities.
+        </p>
+        <!-- PRICING CONSTRAINT 1 -->
+        <div class="constraint-box">
+            <div class="constraint-card">
+                <div class="old-price">₹ 4000</div>
+                <div class="new-price">₹ 2499</div>
+            </div>
+            <div class="constraint-text">
+                We avoided showing discounted prices because the <strong>website didn't have an admin panel</strong> due
+                to the <strong>client's technical constraints.</strong> This made <strong>frequent price
+                    updates</strong> during peak and off-season periods <strong>difficult to manage
+                    efficiently.</strong>
+            </div>
+        </div>
+
+        <!-- PRICING CONSTRAINT 2 (ANCHOR PRICING) -->
+        <div class="constraint-box">
+            <div class="constraint-card">
+                <div class="new-price" style="margin: 0;">₹ 1999</div>
+                <div style="width: 120px; border-top: 2px dashed rgba(0,0,0,0.2); margin: 16px 0;"></div>
+                <div class="new-price" style="margin: 0;">₹ 2999</div>
+            </div>
+            <div class="constraint-text">
+                Using lower <strong>anchor pricing was also not feasible</strong>, as it would <strong>require
+                    compromising on the quality and services</strong> included in the travel packages.
+            </div>
+        </div>
+
+        <!-- PRICING SOLUTION -->
+        <div class="solution-box">
+            <div class="constraint-card">
+                <div style="display: flex; flex-direction: column; align-items: flex-end;">
+                    <div style="font-size: 14px; opacity: 0.6; margin-bottom: 2px;">Starting @</div>
+                    <div class="new-price" style="margin: 0; color: #000000;">₹ 999</div>
+                    <div
+                        style="display: flex; align-items: center; gap: 8px; margin-top: 12px; opacity: 0.5; color: #000;">
+                        <span style="font-size: 24px; font-weight: 300; line-height: 1;">/</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                        <span style="font-size: 24px; font-weight: 300; line-height: 1;">/</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="23"></line>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                            <line x1="1" y1="12" x2="3" y2="12"></line>
+                            <line x1="21" y1="12" x2="23" y2="12"></line>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            <div class="constraint-text">
+                So, to <strong>tackle this problem</strong>, I decided to use a <strong>“Starting @ ₹XXX per
+                    person/day”</strong> pricing strategy, giving users a clear minimum price expectation while
+                maintaining flexibility for seasonal and customized packages.
+            </div>
+        </div>
+        <img src="assets/images/case1/price%20delime%20case%201.svg" alt="Price Dilemma Analysis"
+            style="width: 100%; height: auto; border-radius: var(--radius); margin-top: 48px; display: block;">
+        <img src="assets/images/case1/priceing%20final%20case%201.svg" alt="Final Pricing Strategy"
+            style="width: 100%; height: auto; margin-top: 48px; display: block; border: none;">
+    </section>
+    <footer>
+        &copy; Prayash Portfolio — UX Case Study
+    </footer>
+
 </body>
 
 </html>
