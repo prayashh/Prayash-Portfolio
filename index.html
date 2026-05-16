@@ -94,12 +94,26 @@
             flex-direction: column;
             gap: 5px;
             cursor: pointer;
+            padding: 10px;         /* larger tap target */
+            margin: -10px;        /* offset so layout doesn't shift */
         }
 
         .hamburger span {
             width: 22px;
             height: 2px;
             background: #333;
+        }
+
+        /* Overlay to detect outside clicks when nav is open */
+        #navOverlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 999;  /* just below the nav (z-index 1000) */
+        }
+
+        #navOverlay.active {
+            display: block;
         }
 
         /* HERO */
@@ -320,6 +334,54 @@
                 padding: 50px 0;
             }
         }
+
+        /* CONTACT / SOCIAL */
+        .social-section {
+            text-align: center;
+            padding: 60px 0 80px;
+        }
+
+        .social-section .label {
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #999;
+            margin-bottom: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: nowrap;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: #333;
+            font-size: 14px;
+            font-weight: 500;
+            background: #fff;
+            border: 1px solid rgba(0,0,0,0.12);
+            border-radius: 100px;
+            padding: 10px 20px;
+            transition: transform 0.25s, box-shadow 0.25s;
+        }
+
+        .social-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+        }
+
+        .social-link svg {
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
+        }
     </style>
 </head>
 
@@ -350,6 +412,9 @@
             <span></span>
         </div>
     </header>
+
+    <!-- Invisible overlay — clicking it closes the nav -->
+    <div id="navOverlay" onclick="closeMenu()"></div>
 
     <!-- HERO -->
     <section class="hero">
@@ -425,9 +490,46 @@
         </div>
     </section>
 
+    <!-- CONTACT / SOCIAL -->
+    <section class="social-section">
+        <p class="label">Let's Connect</p>
+        <div class="social-links">
+
+            <!-- Email -->
+            <a class="social-link" href="mailto:prayashsharma2002@gmail.com">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="2" y="4" width="20" height="16" rx="2" stroke="#333" stroke-width="1.8"/>
+                    <path d="M2 7l10 7 10-7" stroke="#333" stroke-width="1.8" stroke-linecap="round"/>
+                </svg>
+                Mail
+            </a>
+
+            <!-- LinkedIn -->
+            <a class="social-link" href="https://www.linkedin.com/in/prayash-sharma-337813259/" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="2" y="2" width="20" height="20" rx="4" stroke="#0A66C2" stroke-width="1.8"/>
+                    <path d="M7 10v7" stroke="#0A66C2" stroke-width="1.8" stroke-linecap="round"/>
+                    <circle cx="7" cy="7.5" r="1" fill="#0A66C2"/>
+                    <path d="M11 17v-4a2 2 0 0 1 4 0v4" stroke="#0A66C2" stroke-width="1.8" stroke-linecap="round"/>
+                    <path d="M11 10v7" stroke="#0A66C2" stroke-width="1.8" stroke-linecap="round"/>
+                </svg>
+                LinkedIn
+            </a>
+
+        </div>
+    </section>
+
     <script>
         function toggleMenu() {
-            document.getElementById("navMenu").classList.toggle("active");
+            const nav = document.getElementById("navMenu");
+            const overlay = document.getElementById("navOverlay");
+            const isOpen = nav.classList.toggle("active");
+            overlay.classList.toggle("active", isOpen);
+        }
+
+        function closeMenu() {
+            document.getElementById("navMenu").classList.remove("active");
+            document.getElementById("navOverlay").classList.remove("active");
         }
 
         function openCase() {
