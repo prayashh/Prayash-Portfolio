@@ -94,8 +94,10 @@
             flex-direction: column;
             gap: 5px;
             cursor: pointer;
-            padding: 10px;         /* larger tap target */
-            margin: -10px;        /* offset so layout doesn't shift */
+            padding: 10px;
+            /* larger tap target */
+            margin: -10px;
+            /* offset so layout doesn't shift */
         }
 
         .hamburger span {
@@ -109,7 +111,8 @@
             display: none;
             position: fixed;
             inset: 0;
-            z-index: 999;  /* just below the nav (z-index 1000) */
+            z-index: 999;
+            /* just below the nav (z-index 1000) */
         }
 
         #navOverlay.active {
@@ -366,7 +369,7 @@
             font-size: 14px;
             font-weight: 500;
             background: #fff;
-            border: 1px solid rgba(0,0,0,0.12);
+            border: 1px solid rgba(0, 0, 0, 0.12);
             border-radius: 100px;
             padding: 10px 20px;
             transition: transform 0.25s, box-shadow 0.25s;
@@ -374,7 +377,7 @@
 
         .social-link:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
         }
 
         .social-link svg {
@@ -382,7 +385,7 @@
             height: 18px;
             flex-shrink: 0;
         }
-    
+
         /* ── CDN IMAGE COMPONENT ── */
         .cdn-image {
             background: #f6f7f8;
@@ -391,24 +394,31 @@
             animation: shimmer 1.5s linear infinite forwards;
             color: transparent;
         }
-        
+
         .cdn-image.loaded {
             background: transparent;
             animation: none;
         }
-        
+
         @keyframes shimmer {
-            0% { background-position: -468px 0; }
-            100% { background-position: 468px 0; }
+            0% {
+                background-position: -468px 0;
+            }
+
+            100% {
+                background-position: 468px 0;
+            }
         }
-</style>
+    </style>
 </head>
 
 <body>
 
     <header>
         <div class="logo">
-            <img class="cdn-image" src="https://ik.imagekit.io/rx7rkge23/Portfolio%20Images%20Prayash/Final Logo Portfolio.svg" alt="Prayash Sharma Logo" height="40"
+            <img class="cdn-image"
+                src="https://ik.imagekit.io/rx7rkge23/Portfolio%20Images%20Prayash/Final Logo Portfolio.svg"
+                alt="Prayash Sharma Logo" height="40"
                 style="display: block; border-radius: 4px; border: 1px solid rgba(0,0,0,0.7); padding: 4px;">
         </div>
 
@@ -417,7 +427,7 @@
             <a href="#work">Work</a>
 
             <!-- DOWNLOAD RESUME -->
-            <a href="assets/resume/PrayashSharmaResume.pdf" download class="resume-btn">
+            <a href="assets/resume/Prayash_Sharma_Resume.pdf" download class="resume-btn">
                 <svg class="download-icon" viewBox="0 0 24 24">
                     <path d="M12 16l4-5h-3V4h-2v7H8l4 5zm-6 2h12v2H6z" />
                 </svg>
@@ -438,7 +448,8 @@
     <!-- HERO -->
     <section class="hero">
         <div class="container">
-            <img class="cdn-image" src="https://ik.imagekit.io/rx7rkge23/Portfolio%20Images%20Prayash/profile.jpeg" alt="">
+            <img class="cdn-image" src="https://ik.imagekit.io/rx7rkge23/Portfolio%20Images%20Prayash/profile.jpeg"
+                alt="">
             <p>Hi! I'm <b>Prayash Sharma</b></p>
             <p>Product / UX Designer</p>
 
@@ -485,7 +496,8 @@
             <div class="case-card" onclick="openCase()">
 
                 <div class="case-img">
-                    <img class="cdn-image" src="https://ik.imagekit.io/rx7rkge23/Portfolio%20Images%20Prayash/Case1Thumbmail.png" alt="">
+                    <img class="cdn-image"
+                        src="https://ik.imagekit.io/rx7rkge23/Portfolio%20Images%20Prayash/Case1Thumbmail.png" alt="">
                 </div>
 
                 <div class="case-text">
@@ -517,20 +529,21 @@
             <!-- Email -->
             <a class="social-link" href="mailto:prayashsharma2002@gmail.com">
                 <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="2" y="4" width="20" height="16" rx="2" stroke="#333" stroke-width="1.8"/>
-                    <path d="M2 7l10 7 10-7" stroke="#333" stroke-width="1.8" stroke-linecap="round"/>
+                    <rect x="2" y="4" width="20" height="16" rx="2" stroke="#333" stroke-width="1.8" />
+                    <path d="M2 7l10 7 10-7" stroke="#333" stroke-width="1.8" stroke-linecap="round" />
                 </svg>
                 Mail
             </a>
 
             <!-- LinkedIn -->
-            <a class="social-link" href="https://www.linkedin.com/in/prayash-sharma-337813259/" target="_blank" rel="noopener noreferrer">
+            <a class="social-link" href="https://www.linkedin.com/in/prayash-sharma-337813259/" target="_blank"
+                rel="noopener noreferrer">
                 <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="2" y="2" width="20" height="20" rx="4" stroke="#0A66C2" stroke-width="1.8"/>
-                    <path d="M7 10v7" stroke="#0A66C2" stroke-width="1.8" stroke-linecap="round"/>
-                    <circle cx="7" cy="7.5" r="1" fill="#0A66C2"/>
-                    <path d="M11 17v-4a2 2 0 0 1 4 0v4" stroke="#0A66C2" stroke-width="1.8" stroke-linecap="round"/>
-                    <path d="M11 10v7" stroke="#0A66C2" stroke-width="1.8" stroke-linecap="round"/>
+                    <rect x="2" y="2" width="20" height="20" rx="4" stroke="#0A66C2" stroke-width="1.8" />
+                    <path d="M7 10v7" stroke="#0A66C2" stroke-width="1.8" stroke-linecap="round" />
+                    <circle cx="7" cy="7.5" r="1" fill="#0A66C2" />
+                    <path d="M11 17v-4a2 2 0 0 1 4 0v4" stroke="#0A66C2" stroke-width="1.8" stroke-linecap="round" />
+                    <path d="M11 10v7" stroke="#0A66C2" stroke-width="1.8" stroke-linecap="round" />
                 </svg>
                 LinkedIn
             </a>
