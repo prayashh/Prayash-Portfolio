@@ -1181,7 +1181,26 @@
                 font-size: 16px;
             }
         }
-    </style>
+    
+        /* ── CDN IMAGE COMPONENT ── */
+        .cdn-image {
+            background: #f6f7f8;
+            background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
+            background-size: 800px 104px;
+            animation: shimmer 1.5s linear infinite forwards;
+            color: transparent;
+        }
+        
+        .cdn-image.loaded {
+            background: transparent;
+            animation: none;
+        }
+        
+        @keyframes shimmer {
+            0% { background-position: -468px 0; }
+            100% { background-position: 468px 0; }
+        }
+</style>
 </head>
 
 <body>
@@ -1203,8 +1222,8 @@
                 website into a high-converting lead funnel.</span></h1>
 
         <!-- Hero mockup strip -->
-        <img loading="lazy" src="assets/images/case1/Mockup%20Case%201.png" alt="Travel Website Redesign Mockup"
-            class="hero-mockup-img">
+        <img loading="lazy" src="https://ik.imagekit.io/rx7rkge23/Portfolio%20Images%20Prayash/case1/Mockup%20Case%201.png" alt="Travel Website Redesign Mockup"
+            class="hero-mockup-img cdn-image">
     </section>
 
     <!-- META -->
@@ -1219,24 +1238,24 @@
         </p>
         <h3>Tool Used</h3>
         <div class="tools-row">
-            <div class="tool-icon" title="Figma"><img loading="lazy"
-                    src="assets/images/case1/Tool%20used%20logo/figma%20logo.jpg" alt="Figma"></div>
-            <div class="tool-icon" title="draw.io"><img loading="lazy"
-                    src="assets/images/case1/Tool%20used%20logo/drawio%20logo.jpg" alt="draw.io"></div>
-            <div class="tool-icon" title="ChatGPT"><img loading="lazy"
-                    src="assets/images/case1/Tool%20used%20logo/chatgpt%20logo.jpg" alt="ChatGPT"></div>
-            <div class="tool-icon" title="Antigravity"><img
-                    src="assets/images/case1/Tool%20used%20logo/antigravity%20logo.jpg" alt="Antigravity"></div>
-            <div class="tool-icon" title="Claude"><img loading="lazy"
-                    src="assets/images/case1/Tool%20used%20logo/claude%20logo.jpg" alt="Claude"></div>
-            <div class="tool-icon" title="Gemini"><img loading="lazy"
-                    src="assets/images/case1/Tool%20used%20logo/gemini%20logo.jpg" alt="Gemini"></div>
-            <div class="tool-icon" title="GitHub"><img loading="lazy"
-                    src="assets/images/case1/Tool%20used%20logo/github%20logo.jpg" alt="GitHub"></div>
-            <div class="tool-icon" title="Google Docs"><img
-                    src="assets/images/case1/Tool%20used%20logo/google%20docs%20logo.jpg" alt="Google Docs"></div>
-            <div class="tool-icon" title="Vercel"><img loading="lazy"
-                    src="assets/images/case1/Tool%20used%20logo/vercel%20logo.jpg" alt="Vercel"></div>
+            <div class="tool-icon" title="Figma"><img class="cdn-image" loading="lazy"
+                    src="https://ik.imagekit.io/rx7rkge23/Portfolio%20Images%20Prayash/case1/Tool%20used%20logo/figma%20logo.jpg" alt="Figma"></div>
+            <div class="tool-icon" title="draw.io"><img class="cdn-image" loading="lazy"
+                    src="https://ik.imagekit.io/rx7rkge23/Portfolio%20Images%20Prayash/case1/Tool%20used%20logo/drawio%20logo.jpg" alt="draw.io"></div>
+            <div class="tool-icon" title="ChatGPT"><img class="cdn-image" loading="lazy"
+                    src="https://ik.imagekit.io/rx7rkge23/Portfolio%20Images%20Prayash/case1/Tool%20used%20logo/chatgpt%20logo.jpg" alt="ChatGPT"></div>
+            <div class="tool-icon" title="Antigravity"><img class="cdn-image"
+                    src="https://ik.imagekit.io/rx7rkge23/Portfolio%20Images%20Prayash/case1/Tool%20used%20logo/antigravity%20logo.jpg" alt="Antigravity"></div>
+            <div class="tool-icon" title="Claude"><img class="cdn-image" loading="lazy"
+                    src="https://ik.imagekit.io/rx7rkge23/Portfolio%20Images%20Prayash/case1/Tool%20used%20logo/claude%20logo.jpg" alt="Claude"></div>
+            <div class="tool-icon" title="Gemini"><img class="cdn-image" loading="lazy"
+                    src="https://ik.imagekit.io/rx7rkge23/Portfolio%20Images%20Prayash/case1/Tool%20used%20logo/gemini%20logo.jpg" alt="Gemini"></div>
+            <div class="tool-icon" title="GitHub"><img class="cdn-image" loading="lazy"
+                    src="https://ik.imagekit.io/rx7rkge23/Portfolio%20Images%20Prayash/case1/Tool%20used%20logo/github%20logo.jpg" alt="GitHub"></div>
+            <div class="tool-icon" title="Google Docs"><img class="cdn-image"
+                    src="https://ik.imagekit.io/rx7rkge23/Portfolio%20Images%20Prayash/case1/Tool%20used%20logo/google%20docs%20logo.jpg" alt="Google Docs"></div>
+            <div class="tool-icon" title="Vercel"><img class="cdn-image" loading="lazy"
+                    src="https://ik.imagekit.io/rx7rkge23/Portfolio%20Images%20Prayash/case1/Tool%20used%20logo/vercel%20logo.jpg" alt="Vercel"></div>
         </div>
         <h3 style="margin-top: 16px;">Project Duration — <span
                 style="font-size: 16px; font-family: var(--font-body); font-weight: 700; text-transform: none; letter-spacing: 0; color: var(--text);">2
@@ -1275,7 +1294,7 @@
             presence.
         </p>
 
-        <img loading="lazy" src="assets/images/case1/story1.webp" alt="Client conversation"
+        <img class="cdn-image" loading="lazy" src="https://ik.imagekit.io/rx7rkge23/Portfolio%20Images%20Prayash/case1/story1.webp" alt="Client conversation"
             style="width: 100%; height: auto; border-radius: var(--radius); margin: 20px 0; display: block;">
 
         <p class="body-text">
@@ -1285,7 +1304,7 @@
             exactly the way they had asked for it.
         </p>
 
-        <img loading="lazy" src="assets/images/case1/story2.webp" alt="Team delivering the website"
+        <img class="cdn-image" loading="lazy" src="https://ik.imagekit.io/rx7rkge23/Portfolio%20Images%20Prayash/case1/story2.webp" alt="Team delivering the website"
             style="width: 100%; height: auto; border-radius: var(--radius); margin: 20px 0; display: block;">
 
         <p class="body-text">
@@ -1297,7 +1316,7 @@
             them and used the website to bring in quality travel leads?
         </p>
 
-        <img loading="lazy" src="assets/images/case1/story3.webp" alt="Client requesting Google Ads setup"
+        <img class="cdn-image" loading="lazy" src="https://ik.imagekit.io/rx7rkge23/Portfolio%20Images%20Prayash/case1/story3.webp" alt="Client requesting Google Ads setup"
             style="width: 100%; height: auto; border-radius: var(--radius); margin: 20px 0; display: block;">
 
         <p class="body-text">
@@ -1305,7 +1324,7 @@
             <strong>accepted the offer</strong>.
         </p>
 
-        <img loading="lazy" src="assets/images/case1/story4.webp" alt="Team accepting the challenge"
+        <img class="cdn-image" loading="lazy" src="https://ik.imagekit.io/rx7rkge23/Portfolio%20Images%20Prayash/case1/story4.webp" alt="Team accepting the challenge"
             style="width: 100%; height: auto; border-radius: var(--radius); margin: 20px 0; display: block;">
     </section>
 
@@ -1314,7 +1333,7 @@
         <h2 class="section-label">First Google Ads Insight</h2>
 
         <div class="insight-grid">
-            <img loading="lazy" src="assets/images/case1/map%20case%201.png" alt="Map - Traffic source by geography"
+            <img class="cdn-image" loading="lazy" src="https://ik.imagekit.io/rx7rkge23/Portfolio%20Images%20Prayash/case1/map%20case%201.png" alt="Map - Traffic source by geography"
                 style="width: 100%; height: auto; display: block; margin: 0;">
             <div style="padding: 4px 0;">
                 <ul class="bullet-list">
@@ -1337,14 +1356,14 @@
         </p>
 
         <div class="insight-grid" style="margin-top: 18px;">
-            <img loading="lazy" src="assets/images/case1/gender%201%20case%201.png" alt="Demographic Insight 1"
+            <img class="cdn-image" loading="lazy" src="https://ik.imagekit.io/rx7rkge23/Portfolio%20Images%20Prayash/case1/gender%201%20case%201.png" alt="Demographic Insight 1"
                 style="width: 100%; height: auto; display: block;">
-            <img loading="lazy" src="assets/images/case1/gender%202%20case%201.png" alt="Demographic Insight 2"
+            <img class="cdn-image" loading="lazy" src="https://ik.imagekit.io/rx7rkge23/Portfolio%20Images%20Prayash/case1/gender%202%20case%201.png" alt="Demographic Insight 2"
                 style="width: 100%; height: auto; display: block;">
         </div>
 
         <div class="insight-grid" style="margin-top: 18px; align-items: center;">
-            <img loading="lazy" src="assets/images/case1/mobile%20usage%20case%201.png" alt="Mobile Usage Statistics"
+            <img class="cdn-image" loading="lazy" src="https://ik.imagekit.io/rx7rkge23/Portfolio%20Images%20Prayash/case1/mobile%20usage%20case%201.png" alt="Mobile Usage Statistics"
                 style="width: 100%; height: auto; display: block; margin: 0;">
             <div style="padding: 4px 0;">
                 <p class="body-text" style="margin: 0;">
@@ -1389,14 +1408,14 @@
     <!-- FLOW CHART -->
     <section class="section">
         <h2 class="section-label">Flow Chart</h2>
-        <img loading="lazy" src="assets/images/case1/Flow%20chart%20case1.svg" alt="Flow Chart"
+        <img class="cdn-image" loading="lazy" src="https://ik.imagekit.io/rx7rkge23/Portfolio%20Images%20Prayash/case1/Flow%20chart%20case1.svg" alt="Flow Chart"
             style="width: 100%; height: auto; border-radius: var(--radius); margin-top: 10px; display: block;">
     </section>
 
     <!-- WIREFRAME OF REDESIGN -->
     <section class="section">
         <h2 class="section-label">Wireframe of Redesign</h2>
-        <img loading="lazy" src="assets/images/case1/wireframe%20%20redesign%20case1.svg" alt="Wireframe Redesign"
+        <img class="cdn-image" loading="lazy" src="https://ik.imagekit.io/rx7rkge23/Portfolio%20Images%20Prayash/case1/wireframe%20%20redesign%20case1.svg" alt="Wireframe Redesign"
             style="width: 100%; height: auto; border-radius: var(--radius); margin-top: 10px; display: block;">
     </section>
 
@@ -1407,50 +1426,50 @@
 
         <h2 class="section-label">Initial Design</h2>
         <div class="design-screens">
-            <img loading="lazy" src="assets/images/case1/initial%20design11.png" alt="Initial Home"
+            <img class="cdn-image" loading="lazy" src="https://ik.imagekit.io/rx7rkge23/Portfolio%20Images%20Prayash/case1/initial%20design11.png" alt="Initial Home"
                 style="width: 100%; height: auto; display: block;">
-            <img loading="lazy" src="assets/images/case1/initial%20design21.png" alt="Initial Packages"
+            <img class="cdn-image" loading="lazy" src="https://ik.imagekit.io/rx7rkge23/Portfolio%20Images%20Prayash/case1/initial%20design21.png" alt="Initial Packages"
                 style="width: 100%; height: auto; display: block;">
-            <img loading="lazy" src="assets/images/case1/initial%20design31.png" alt="Initial Detail"
+            <img class="cdn-image" loading="lazy" src="https://ik.imagekit.io/rx7rkge23/Portfolio%20Images%20Prayash/case1/initial%20design31.png" alt="Initial Detail"
                 style="width: 100%; height: auto; display: block;">
         </div>
 
         <h2 class="section-label">Problem With Initial Design</h2>
-        <img loading="lazy" src="assets/images/case1/problem%20with%20initial%20design%20case%201.svg"
+        <img class="cdn-image" loading="lazy" src="https://ik.imagekit.io/rx7rkge23/Portfolio%20Images%20Prayash/case1/problem%20with%20initial%20design%20case%201.svg"
             alt="Problematic Layout" style="width: 100%; height: auto; display: block;">
 
         <h2 class="section-label">Final Design</h2>
-        <img loading="lazy" src="assets/images/case1/final%20design%20case%201.svg" alt="Final Design Screens"
+        <img class="cdn-image" loading="lazy" src="https://ik.imagekit.io/rx7rkge23/Portfolio%20Images%20Prayash/case1/final%20design%20case%201.svg" alt="Final Design Screens"
             style="width: 100%; height: auto; display: block;">
 
         <h2 class="section-label">Added Filters to Simplify Decision-Making</h2>
-        <img loading="lazy" src="assets/images/case1/filter%20case%201.svg" alt="Added Filter Button"
+        <img class="cdn-image" loading="lazy" src="https://ik.imagekit.io/rx7rkge23/Portfolio%20Images%20Prayash/case1/filter%20case%201.svg" alt="Added Filter Button"
             style="width: 100%; height: auto; display: block;">
 
         <h2 class="section-label">What if the User Didn’t Find the Package of their Category?</h2>
-        <img loading="lazy" src="assets/images/case1/user%20confusion%20state%20case%201.svg" alt="User Confusion State"
+        <img class="cdn-image" loading="lazy" src="https://ik.imagekit.io/rx7rkge23/Portfolio%20Images%20Prayash/case1/user%20confusion%20state%20case%201.svg" alt="User Confusion State"
             style="width: 100%; height: auto; display: block;">
-        <img loading="lazy" src="assets/images/case1/custom%20package%20available%20case%201.svg"
+        <img class="cdn-image" loading="lazy" src="https://ik.imagekit.io/rx7rkge23/Portfolio%20Images%20Prayash/case1/custom%20package%20available%20case%201.svg"
             alt="Custom Package Available" style="width: 100%; height: auto; display: block;">
 
         <h2 class="section-label">How Single CTA on Error State Impact User Flow</h2>
-        <img loading="lazy" src="assets/images/case1/cta%201%20case%201.svg" alt="CTA Analysis 1"
+        <img class="cdn-image" loading="lazy" src="https://ik.imagekit.io/rx7rkge23/Portfolio%20Images%20Prayash/case1/cta%201%20case%201.svg" alt="CTA Analysis 1"
             style="width: 100%; height: auto; display: block;">
-        <img loading="lazy" src="assets/images/case1/cta%202%20case%201.svg" alt="CTA Analysis 2"
+        <img class="cdn-image" loading="lazy" src="https://ik.imagekit.io/rx7rkge23/Portfolio%20Images%20Prayash/case1/cta%202%20case%201.svg" alt="CTA Analysis 2"
             style="width: 100%; height: auto; display: block; margin-top: 10px;">
 
         <h2 class="section-label">Decision of Increasing Interaction Cost !</h2>
-        <img loading="lazy" src="assets/images/case1/increasing%20interaction%20cost%20case%201.svg"
+        <img class="cdn-image" loading="lazy" src="https://ik.imagekit.io/rx7rkge23/Portfolio%20Images%20Prayash/case1/increasing%20interaction%20cost%20case%201.svg"
             alt="Interaction Cost Analysis" style="width: 100%; height: auto; display: block;">
-        <img loading="lazy" src="assets/images/case1/ads%20friendly.svg" alt="Ads Friendly Design"
+        <img class="cdn-image" loading="lazy" src="https://ik.imagekit.io/rx7rkge23/Portfolio%20Images%20Prayash/case1/ads%20friendly.svg" alt="Ads Friendly Design"
             style="width: 100%; height: auto; display: block;">
 
         <h2 class="section-label">Not Every User Wants to Explore Everything</h2>
-        <img loading="lazy" src="assets/images/case1/aware%20user.svg" alt="Aware User Analysis"
+        <img class="cdn-image" loading="lazy" src="https://ik.imagekit.io/rx7rkge23/Portfolio%20Images%20Prayash/case1/aware%20user.svg" alt="Aware User Analysis"
             style="width: 100%; height: auto; display: block;">
 
         <h2 class="section-label">What If Users Have Unclear Intent and Click Randomly?</h2>
-        <img loading="lazy" src="assets/images/case1/unaware%20user.svg" alt="Unaware User Analysis"
+        <img class="cdn-image" loading="lazy" src="https://ik.imagekit.io/rx7rkge23/Portfolio%20Images%20Prayash/case1/unaware%20user.svg" alt="Unaware User Analysis"
             style="width: 100%; height: auto; display: block;">
 
 
@@ -1527,14 +1546,14 @@
                 maintaining flexibility for seasonal and customized packages.
             </div>
         </div>
-        <img loading="lazy" src="assets/images/case1/price%20delime%20case%201.svg" alt="Price Dilemma Analysis"
+        <img class="cdn-image" loading="lazy" src="https://ik.imagekit.io/rx7rkge23/Portfolio%20Images%20Prayash/case1/price%20delime%20case%201.svg" alt="Price Dilemma Analysis"
             style="width: 100%; height: auto; border-radius: var(--radius); margin-top: 48px; display: block;">
-        <img loading="lazy" src="assets/images/case1/priceing%20final%20case%201.svg" alt="Final Pricing Strategy"
+        <img class="cdn-image" loading="lazy" src="https://ik.imagekit.io/rx7rkge23/Portfolio%20Images%20Prayash/case1/priceing%20final%20case%201.svg" alt="Final Pricing Strategy"
             style="width: 100%; height: auto; margin-top: 48px; display: block; border: none;">
-        <img loading="lazy" src="assets/images/case1/Leverage%20ai%20case%201.svg" alt="Leverage AI"
+        <img class="cdn-image" loading="lazy" src="https://ik.imagekit.io/rx7rkge23/Portfolio%20Images%20Prayash/case1/Leverage%20ai%20case%201.svg" alt="Leverage AI"
             style="width: 100%; height: auto; margin-top: 48px; display: block; border: none;">
         <div class="insight-grid" style="margin-top: 48px; gap: 24px; align-items: center;">
-            <img loading="lazy" src="assets/images/case1/design%20by%20ai.png" alt="Design by AI"
+            <img class="cdn-image" loading="lazy" src="https://ik.imagekit.io/rx7rkge23/Portfolio%20Images%20Prayash/case1/design%20by%20ai.png" alt="Design by AI"
                 style="width: 100%; height: auto; display: block; border: none;">
             <p class="body-text" style="margin: 0;">
                 We also experimented with AI-generated pricing visuals using <strong>Gemini Nano Banana</strong> to
@@ -1549,7 +1568,7 @@
     <!-- REDUCING COGNITIVE OVERLOAD -->
     <section class="section">
         <h2 class="section-label">Reducing Cognitive Overload in Custom Packages</h2>
-        <img loading="lazy" src="assets/images/case1/Old%20vs%20New%20CP%20Case%201.svg"
+        <img class="cdn-image" loading="lazy" src="https://ik.imagekit.io/rx7rkge23/Portfolio%20Images%20Prayash/case1/Old%20vs%20New%20CP%20Case%201.svg"
             alt="Old vs New Custom Packages" style="width: 100%; height: auto; display: block; border: none;">
 
         <h2 class="section-label" style="margin-top: 64px;">Design Assumptions made to Balance Desirability and
@@ -1571,7 +1590,7 @@
             <strong>create a stronger emotional pull</strong> and <strong>increase the desire to visit the
                 destination.</strong>
         </p>
-        <img loading="lazy" src="assets/images/case1/priority%20case%201.svg" alt="Design Assumptions Priority"
+        <img class="cdn-image" loading="lazy" src="https://ik.imagekit.io/rx7rkge23/Portfolio%20Images%20Prayash/case1/priority%20case%201.svg" alt="Design Assumptions Priority"
             style="width: 100%; height: auto; margin-top: 48px; display: block; border: none;">
     </section>
 
@@ -1748,6 +1767,22 @@
                     fab.classList.remove('show');
                 }
             }
+        });
+    </script>
+
+    <!-- IMAGEKIT CDN SCRIPT -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const cdnImages = document.querySelectorAll('.cdn-image');
+            cdnImages.forEach(img => {
+                if (img.complete) {
+                    img.classList.add('loaded');
+                } else {
+                    img.addEventListener('load', () => {
+                        img.classList.add('loaded');
+                    });
+                }
+            });
         });
     </script>
 </body>
