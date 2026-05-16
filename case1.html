@@ -308,66 +308,118 @@
             margin-top: 10px;
         }
 
-        /* ── CONSTRAINT BOX ── */
-        .constraint-box {
+        /* ─────────────────────────────
+           IMPROVED PRICING SECTION
+        ───────────────────────────── */
+
+        .constraint-box,
+        .solution-box {
             background: #FFC7C7;
             border-radius: 24px;
-            padding: 12px;
+            padding: 20px;
             display: flex;
             align-items: center;
-            gap: 40px;
-            margin-top: 16px;
-            outline: 1px solid rgba(0, 0, 0, 0.1);
+            gap: 24px;
+            margin-top: 20px;
+            border: 1px solid rgba(0, 0, 0, 0.08);
         }
 
+        .solution-box {
+            background: #E8F5E9;
+        }
+
+        /* CARD */
+
         .constraint-card {
-            background: white;
-            border-radius: 12px;
-            padding: 24px;
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 20px 18px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            width: 180px;
-            height: 180px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-            flex-shrink: 0;
-            box-sizing: border-box;
+            width: 170px;
+            min-width: 170px;
+            min-height: 150px;
+            box-shadow:
+                0 4px 20px rgba(0, 0, 0, 0.05);
         }
+
+        /* OLD PRICE */
 
         .constraint-card .old-price {
-            font-size: 18px;
-            color: #1E1E1E;
+            font-size: 16px;
+            color: #777;
             text-decoration: line-through;
             font-weight: 500;
-            opacity: 0.6;
+            opacity: .7;
         }
 
+        /* MAIN PRICE */
+
         .constraint-card .new-price {
-            font-size: 32px;
-            font-weight: 700;
+            font-size: 34px;
+            font-weight: 800;
             color: #000;
-            margin-top: 4px;
+            line-height: 1.1;
+            margin-top: 6px;
         }
+
+        /* DASHED DIVIDER */
+
+        .price-divider {
+            width: 90px;
+            border-top: 2px dashed rgba(0, 0, 0, 0.15);
+            margin: 14px 0;
+        }
+
+        /* TEXT */
 
         .constraint-text {
             flex: 1;
-            font-size: 16px;
-            color: black;
-            line-height: 1.6;
+            font-size: 15px;
+            line-height: 1.7;
+            color: #1E1E1E;
         }
 
+        /* MOBILE OPTIMIZATION */
 
+        @media (max-width:768px) {
 
-        .solution-box {
-            background: #E8F5E9;
-            border-radius: 24px;
-            padding: 12px;
-            display: flex;
-            align-items: center;
-            gap: 40px;
-            margin-top: 16px;
-            outline: 1px solid rgba(0, 0, 0, 0.1);
+            .constraint-box,
+            .solution-box {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                padding: 18px;
+                gap: 18px;
+            }
+
+            .constraint-card {
+                width: 100%;
+                max-width: 220px;
+                min-width: auto;
+                min-height: 125px;
+                padding: 18px 14px;
+            }
+
+            .constraint-card .new-price {
+                font-size: 28px;
+            }
+
+            .constraint-card .old-price {
+                font-size: 14px;
+            }
+
+            .price-divider {
+                width: 70px;
+                margin: 10px 0;
+            }
+
+            .constraint-text {
+                font-size: 14px;
+                line-height: 1.6;
+            }
         }
 
 
@@ -724,6 +776,411 @@
             font-size: 13px;
             color: var(--text-light);
         }
+
+        /* ── FAB ── */
+        .fab {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background-color: var(--accent);
+            color: white;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(14, 56, 50, 0.3);
+            cursor: pointer;
+            border: none;
+            z-index: 1000;
+            transition: opacity 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(20px);
+        }
+
+        .fab.show {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
+
+        .fab.show:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 16px rgba(14, 56, 50, 0.4);
+        }
+
+        .fab svg {
+            width: 24px;
+            height: 24px;
+            fill: none;
+            stroke: white;
+            stroke-width: 2.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        /* ── IMPACT GRID ── */
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .impact-card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 40px 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out, box-shadow 0.3s ease;
+        }
+
+        .impact-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .impact-card.visible:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.06);
+        }
+
+        .impact-card.dominant {
+            transform: translateY(30px) scale(1.1);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
+            z-index: 1;
+        }
+
+        .impact-card.dominant.visible {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        .impact-card.dominant.visible:hover {
+            transform: scale(1.1) translateY(-5px);
+            box-shadow: 0 20px 48px rgba(0, 0, 0, 0.1);
+        }
+
+        .impact-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+        }
+
+        .impact-icon svg {
+            width: 32px;
+            height: 32px;
+        }
+
+        .impact-icon.muted-red {
+            background: #FFF0F0;
+            color: #D9534F;
+        }
+
+        .impact-icon.dark-green {
+            background: #E8F5E9;
+            color: #2E7D32;
+        }
+
+        .impact-metric {
+            font-family: 'Poppins', sans-serif;
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 8px;
+        }
+
+        .muted-red-text {
+            color: #D9534F;
+        }
+
+        .dark-green-text {
+            color: #2E7D32;
+        }
+
+        .impact-subtitle {
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            color: #555;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+        @media (max-width: 768px) {
+            .impact-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 10px;
+            }
+            .impact-card {
+                padding: 20px 10px;
+                border-radius: 14px;
+            }
+            .impact-icon {
+                width: 40px;
+                height: 40px;
+                border-radius: 10px;
+                margin-bottom: 12px;
+            }
+            .impact-icon svg {
+                width: 20px;
+                height: 20px;
+            }
+            .impact-metric {
+                font-size: 28px;
+                margin-bottom: 6px;
+            }
+            .impact-subtitle {
+                font-size: 11px;
+                line-height: 1.3;
+            }
+            .impact-card.dominant {
+                transform: translateY(30px) scale(1.06);
+                box-shadow: 0 12px 32px rgba(0, 0, 0, 0.07);
+                z-index: 1;
+            }
+            .impact-card.dominant.visible {
+                transform: scale(1.06);
+            }
+            .impact-card.dominant.visible:hover {
+                transform: scale(1.06) translateY(-4px);
+                box-shadow: 0 16px 36px rgba(0, 0, 0, 0.1);
+            }
+        }
+
+        /* ─────────────────────────────
+           GLOBAL SPACING SYSTEM
+        ───────────────────────────── */
+
+        .section{
+            max-width:760px;
+            margin:0 auto;
+            padding:72px 24px;
+        }
+
+        /* Remove random spacing stacking */
+
+        .section + .section{
+            padding-top:0;
+        }
+
+        /* ─────────────────────────────
+           HEADING HIERARCHY
+        ───────────────────────────── */
+
+        .section-label{
+            font-size:32px;
+            font-family:'Poppins',sans-serif;
+            font-weight:700;
+            line-height:1.25;
+            letter-spacing:-0.02em;
+
+            margin-top:72px;
+            margin-bottom:18px;
+
+            color:var(--text);
+        }
+
+        /* First heading inside section */
+
+        .section > .section-label:first-child{
+            margin-top:0;
+            margin-bottom:14px;
+        }
+
+        /* ─────────────────────────────
+           BODY TEXT SPACING
+        ───────────────────────────── */
+
+        .body-text{
+            font-size:16px;
+            line-height:1.8;
+            color:var(--text-muted);
+
+            margin-bottom:18px;
+        }
+
+        .body-text:last-child{
+            margin-bottom:0;
+        }
+
+        /* Tight spacing between heading and content */
+
+        .section-label + .body-text,
+        .section-label + ul,
+        .section-label + .constraint-box,
+        .section-label + img{
+            margin-top:0;
+        }
+
+        /* ─────────────────────────────
+           BULLET LIST SYSTEM
+        ───────────────────────────── */
+
+        .bullet-list{
+            margin-top:10px;
+        }
+
+        .bullet-list li{
+            margin-bottom:12px;
+            line-height:1.75;
+        }
+
+        /* ─────────────────────────────
+           IMAGE SPACING
+        ───────────────────────────── */
+
+        .section img{
+            margin-top:28px;
+            margin-bottom:28px;
+        }
+
+        /* ─────────────────────────────
+           COMPONENT SPACING
+        ───────────────────────────── */
+
+        .constraint-box,
+        .solution-box,
+        .insight-grid,
+        .impact-grid,
+        .funnel-wrap{
+            margin-top:28px;
+        }
+
+        /* ─────────────────────────────
+           MOBILE REFINEMENT
+        ───────────────────────────── */
+
+        @media(max-width:768px){
+
+            .section{
+                padding:56px 18px;
+            }
+
+            .section-label{
+                font-size:26px;
+                margin-top:56px;
+                margin-bottom:14px;
+            }
+
+            .body-text{
+                line-height:1.75;
+            }
+
+        }
+
+        /* ─────────────────────────────
+           CLOSING CTA SECTION
+        ───────────────────────────── */
+
+        .closing-cta-section {
+            position: relative;
+            overflow: hidden;
+            background: #ffffff;
+            padding: 140px 24px;
+            text-align: center;
+            margin-top: 64px;
+            border-radius: 32px 32px 0 0;
+            box-shadow: 0 -10px 40px rgba(0,0,0,0.02);
+        }
+
+        .closing-cta-bg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(14, 56, 50, 0.05) 0%, rgba(255,255,255,0) 70%);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .closing-cta-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .closing-dialogue {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(22px, 3vw, 28px);
+            line-height: 1.5;
+            color: rgba(17, 17, 17, 0.6);
+            margin-bottom: 28px;
+            font-weight: 500;
+            letter-spacing: -0.01em;
+        }
+
+        .closing-dialogue strong {
+            font-weight: 700;
+            color: var(--accent);
+            opacity: 1;
+        }
+
+        .closing-support {
+            font-family: 'Inter', sans-serif;
+            font-size: 18px;
+            color: #666;
+            line-height: 1.7;
+            max-width: 600px;
+            margin: 0 auto 48px;
+        }
+
+        .closing-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px 40px;
+            background: var(--accent);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 40px;
+            font-size: 16px;
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+            box-shadow: 0 8px 24px rgba(14, 56, 50, 0.15);
+        }
+
+        .closing-btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 36px rgba(14, 56, 50, 0.25);
+            background: #11423a;
+            color: #fff;
+        }
+
+        .fade-up-element {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 1s cubic-bezier(0.2, 0.8, 0.2, 1), transform 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .fade-up-element.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .closing-cta-section {
+                padding: 100px 20px;
+                border-radius: 24px 24px 0 0;
+            }
+            .closing-support {
+                font-size: 16px;
+            }
+        }
     </style>
 </head>
 
@@ -762,24 +1219,24 @@
         </p>
         <h3>Tool Used</h3>
         <div class="tools-row">
-            <div class="tool-icon" title="Figma"><img loading="lazy" src="assets/images/case1/Tool%20used%20logo/figma%20logo.jpg"
-                    alt="Figma"></div>
-            <div class="tool-icon" title="draw.io"><img loading="lazy" src="assets/images/case1/Tool%20used%20logo/drawio%20logo.jpg"
-                    alt="draw.io"></div>
-            <div class="tool-icon" title="ChatGPT"><img loading="lazy" src="assets/images/case1/Tool%20used%20logo/chatgpt%20logo.jpg"
-                    alt="ChatGPT"></div>
+            <div class="tool-icon" title="Figma"><img loading="lazy"
+                    src="assets/images/case1/Tool%20used%20logo/figma%20logo.jpg" alt="Figma"></div>
+            <div class="tool-icon" title="draw.io"><img loading="lazy"
+                    src="assets/images/case1/Tool%20used%20logo/drawio%20logo.jpg" alt="draw.io"></div>
+            <div class="tool-icon" title="ChatGPT"><img loading="lazy"
+                    src="assets/images/case1/Tool%20used%20logo/chatgpt%20logo.jpg" alt="ChatGPT"></div>
             <div class="tool-icon" title="Antigravity"><img
                     src="assets/images/case1/Tool%20used%20logo/antigravity%20logo.jpg" alt="Antigravity"></div>
-            <div class="tool-icon" title="Claude"><img loading="lazy" src="assets/images/case1/Tool%20used%20logo/claude%20logo.jpg"
-                    alt="Claude"></div>
-            <div class="tool-icon" title="Gemini"><img loading="lazy" src="assets/images/case1/Tool%20used%20logo/gemini%20logo.jpg"
-                    alt="Gemini"></div>
-            <div class="tool-icon" title="GitHub"><img loading="lazy" src="assets/images/case1/Tool%20used%20logo/github%20logo.jpg"
-                    alt="GitHub"></div>
+            <div class="tool-icon" title="Claude"><img loading="lazy"
+                    src="assets/images/case1/Tool%20used%20logo/claude%20logo.jpg" alt="Claude"></div>
+            <div class="tool-icon" title="Gemini"><img loading="lazy"
+                    src="assets/images/case1/Tool%20used%20logo/gemini%20logo.jpg" alt="Gemini"></div>
+            <div class="tool-icon" title="GitHub"><img loading="lazy"
+                    src="assets/images/case1/Tool%20used%20logo/github%20logo.jpg" alt="GitHub"></div>
             <div class="tool-icon" title="Google Docs"><img
                     src="assets/images/case1/Tool%20used%20logo/google%20docs%20logo.jpg" alt="Google Docs"></div>
-            <div class="tool-icon" title="Vercel"><img loading="lazy" src="assets/images/case1/Tool%20used%20logo/vercel%20logo.jpg"
-                    alt="Vercel"></div>
+            <div class="tool-icon" title="Vercel"><img loading="lazy"
+                    src="assets/images/case1/Tool%20used%20logo/vercel%20logo.jpg" alt="Vercel"></div>
         </div>
         <h3 style="margin-top: 16px;">Project Duration — <span
                 style="font-size: 16px; font-family: var(--font-body); font-weight: 700; text-transform: none; letter-spacing: 0; color: var(--text);">2
@@ -788,7 +1245,7 @@
 
 
     <!-- PROBLEM STATEMENT -->
-    <section class="section">
+    <section class="section" id="problem-statement">
         <h2 class="section-label">Problem Statement</h2>
         <p class="body-text">
             <strong>Users struggle to discover tour packages</strong> and trust the travel website due to cluttered
@@ -861,9 +1318,11 @@
                 style="width: 100%; height: auto; display: block; margin: 0;">
             <div style="padding: 4px 0;">
                 <ul class="bullet-list">
-                    <li>Major traffic came from West Bengal, Odisha, Jharkhand, Assam, Bihar, and other Eastern states.</li>
+                    <li>Major traffic came from West Bengal, Odisha, Jharkhand, Assam, Bihar, and other Eastern states.
+                    </li>
                     <li><strong>West Bengal contributed nearly 60%</strong> of total traffic and inquiries.</li>
-                    <li><strong>Helped us optimize</strong> the experience <strong>for the target regional audience.</strong></li>
+                    <li><strong>Helped us optimize</strong> the experience <strong>for the target regional
+                            audience.</strong></li>
                 </ul>
             </div>
         </div>
@@ -889,9 +1348,12 @@
                 style="width: 100%; height: auto; display: block; margin: 0;">
             <div style="padding: 4px 0;">
                 <p class="body-text" style="margin: 0;">
-                    Here, we discovered that more than <strong>99% of users</strong> were <strong>browsing</strong> through
-                    <strong>mobile devices</strong>. This highlighted the <strong>need to design</strong> a highly responsive
-                    mobile experience while <strong>maintaining</strong> clear <strong>package discoverability</strong> and
+                    Here, we discovered that more than <strong>99% of users</strong> were <strong>browsing</strong>
+                    through
+                    <strong>mobile devices</strong>. This highlighted the <strong>need to design</strong> a highly
+                    responsive
+                    mobile experience while <strong>maintaining</strong> clear <strong>package discoverability</strong>
+                    and
                     <strong>easy navigation.</strong>
                 </p>
             </div>
@@ -940,7 +1402,8 @@
 
     <!-- STRATEGIC UX DECISIONS -->
     <section class="section">
-        <h2 class="section-label" style="font-size: 32px; font-weight: 800; margin-bottom: 48px;">Strategic UX Decisions</h2>
+        <h2 class="section-label" style="font-size: 32px; font-weight: 800; margin-bottom: 48px;">Strategic UX Decisions
+        </h2>
 
         <h2 class="section-label">Initial Design</h2>
         <div class="design-screens">
@@ -953,8 +1416,8 @@
         </div>
 
         <h2 class="section-label">Problem With Initial Design</h2>
-        <img loading="lazy" src="assets/images/case1/problem%20with%20initial%20design%20case%201.svg" alt="Problematic Layout"
-            style="width: 100%; height: auto; display: block;">
+        <img loading="lazy" src="assets/images/case1/problem%20with%20initial%20design%20case%201.svg"
+            alt="Problematic Layout" style="width: 100%; height: auto; display: block;">
 
         <h2 class="section-label">Final Design</h2>
         <img loading="lazy" src="assets/images/case1/final%20design%20case%201.svg" alt="Final Design Screens"
@@ -967,18 +1430,18 @@
         <h2 class="section-label">What if the User Didn’t Find the Package of their Category?</h2>
         <img loading="lazy" src="assets/images/case1/user%20confusion%20state%20case%201.svg" alt="User Confusion State"
             style="width: 100%; height: auto; display: block;">
-        <img loading="lazy" src="assets/images/case1/custom%20package%20available%20case%201.svg" alt="Custom Package Available"
-            style="width: 100%; height: auto; display: block;">
+        <img loading="lazy" src="assets/images/case1/custom%20package%20available%20case%201.svg"
+            alt="Custom Package Available" style="width: 100%; height: auto; display: block;">
 
         <h2 class="section-label">How Single CTA on Error State Impact User Flow</h2>
         <img loading="lazy" src="assets/images/case1/cta%201%20case%201.svg" alt="CTA Analysis 1"
             style="width: 100%; height: auto; display: block;">
         <img loading="lazy" src="assets/images/case1/cta%202%20case%201.svg" alt="CTA Analysis 2"
-            style="width: 100%; height: auto; display: block;">
+            style="width: 100%; height: auto; display: block; margin-top: 10px;">
 
         <h2 class="section-label">Decision of Increasing Interaction Cost !</h2>
-        <img loading="lazy" src="assets/images/case1/increasing%20interaction%20cost%20case%201.svg" alt="Interaction Cost Analysis"
-            style="width: 100%; height: auto; display: block;">
+        <img loading="lazy" src="assets/images/case1/increasing%20interaction%20cost%20case%201.svg"
+            alt="Interaction Cost Analysis" style="width: 100%; height: auto; display: block;">
         <img loading="lazy" src="assets/images/case1/ads%20friendly.svg" alt="Ads Friendly Design"
             style="width: 100%; height: auto; display: block;">
 
@@ -1019,7 +1482,7 @@
         <div class="constraint-box">
             <div class="constraint-card">
                 <div class="new-price" style="margin: 0;">₹ 1999</div>
-                <div style="width: 120px; border-top: 2px dashed rgba(0,0,0,0.2); margin: 16px 0;"></div>
+                <div class="price-divider"></div>
                 <div class="new-price" style="margin: 0;">₹ 2999</div>
             </div>
             <div class="constraint-text">
@@ -1035,15 +1498,15 @@
                     <div style="font-size: 14px; opacity: 0.6; margin-bottom: 2px;">Starting @</div>
                     <div class="new-price" style="margin: 0; color: #000000;">₹ 999</div>
                     <div
-                        style="display: flex; align-items: center; gap: 8px; margin-top: 12px; opacity: 0.5; color: #000;">
-                        <span style="font-size: 24px; font-weight: 300; line-height: 1;">/</span>
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        style="display: flex; align-items: center; gap: 6px; margin-top: 8px; opacity: 0.5; color: #000;">
+                        <span style="font-size: 18px; font-weight: 300; line-height: 1;">/</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
                             <circle cx="12" cy="7" r="4"></circle>
                         </svg>
-                        <span style="font-size: 24px; font-weight: 300; line-height: 1;">/</span>
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        <span style="font-size: 18px; font-weight: 300; line-height: 1;">/</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                             <circle cx="12" cy="12" r="5"></circle>
                             <line x1="12" y1="1" x2="12" y2="3"></line>
@@ -1068,11 +1531,225 @@
             style="width: 100%; height: auto; border-radius: var(--radius); margin-top: 48px; display: block;">
         <img loading="lazy" src="assets/images/case1/priceing%20final%20case%201.svg" alt="Final Pricing Strategy"
             style="width: 100%; height: auto; margin-top: 48px; display: block; border: none;">
+        <img loading="lazy" src="assets/images/case1/Leverage%20ai%20case%201.svg" alt="Leverage AI"
+            style="width: 100%; height: auto; margin-top: 48px; display: block; border: none;">
+        <div class="insight-grid" style="margin-top: 48px; gap: 24px; align-items: center;">
+            <img loading="lazy" src="assets/images/case1/design%20by%20ai.png" alt="Design by AI"
+                style="width: 100%; height: auto; display: block; border: none;">
+            <p class="body-text" style="margin: 0;">
+                We also experimented with AI-generated pricing visuals using <strong>Gemini Nano Banana</strong> to
+                communicate the <strong>“per person / per day”</strong> pricing model through icons. However, during
+                evaluation, I felt the visual language might not be immediately understandable for users, so I decided
+                to
+                <strong>drop the idea</strong> to maintain clarity and reduce confusion.
+            </p>
+        </div>
     </section>
+
+    <!-- REDUCING COGNITIVE OVERLOAD -->
+    <section class="section">
+        <h2 class="section-label">Reducing Cognitive Overload in Custom Packages</h2>
+        <img loading="lazy" src="assets/images/case1/Old%20vs%20New%20CP%20Case%201.svg"
+            alt="Old vs New Custom Packages" style="width: 100%; height: auto; display: block; border: none;">
+
+        <h2 class="section-label" style="margin-top: 64px;">Design Assumptions made to Balance Desirability and
+            Discoverability</h2>
+        <p class="body-text">
+            For <strong>returning users, the journey is much simpler</strong>. Once they complete a trip, they already
+            have the agency’s contact number and familiarity with the service, so if they want to book a similar package
+            again, they are more likely to <strong>directly call</strong> or <strong>message on WhatsApp</strong>
+            instead of exploring the website again.
+        </p>
+        <p class="body-text">
+            But <strong>the real challenge</strong> was the <strong>first-time users</strong>.
+        </p>
+        <p class="body-text">
+            Unlike returning customers, first-time users don’t initially come with trust or clarity — <strong>they come
+                with a desire to travel</strong>, explore, and experience a place. So <strong>instead of
+                optimizing</strong> only for <strong>information density</strong> or <strong>discoverability</strong>
+            alone, we intentionally made the <strong>package cards larger</strong> with immersive visuals to
+            <strong>create a stronger emotional pull</strong> and <strong>increase the desire to visit the
+                destination.</strong>
+        </p>
+        <img loading="lazy" src="assets/images/case1/priority%20case%201.svg" alt="Design Assumptions Priority"
+            style="width: 100%; height: auto; margin-top: 48px; display: block; border: none;">
+    </section>
+
+    <!-- SECOND GOOGLE ADS -->
+    <section class="section">
+        <h2 class="section-label">Ran Second Google Ads</h2>
+        <div class="funnel-wrap" style="display: flex; flex-direction: column; align-items: center; gap: 8px; margin-top: 32px;">
+            <div class="funnel-bar" style="width:100%; min-width: 150px;">2500+ Impressions</div>
+            <div class="funnel-bar" style="width:75%;">300+ Clicks</div>
+            <div class="funnel-bar" style="width:50%; min-width: 150px;">40-50 Booking Enquiry</div>
+            <div class="funnel-bar" style="width:25%; min-width: 110px;">10% Conversion</div>
+        </div>
+    </section>
+
+    <!-- BUSINESS IMPACT -->
+    <section class="section" id="business-impact-section" style="margin-top: 64px;">
+        <h2 class="section-label">Business Impact ?</h2>
+        <div class="impact-grid" style="margin-top: 48px;">
+            <!-- Card 1 -->
+            <div class="impact-card">
+                <div class="impact-icon muted-red">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="12" y1="5" x2="12" y2="19"></line>
+                        <polyline points="19 12 12 19 5 12"></polyline>
+                    </svg>
+                </div>
+                <div class="impact-metric muted-red-text" data-start="70" data-end="34">70%</div>
+                <div class="impact-subtitle">Decrease in Dropout Rates</div>
+            </div>
+            <!-- Card 2 -->
+            <div class="impact-card dominant">
+                <div class="impact-icon dark-green">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                        <polyline points="17 6 23 6 23 12"></polyline>
+                    </svg>
+                </div>
+                <div class="impact-metric dark-green-text" data-start="1" data-end="70">1%</div>
+                <div class="impact-subtitle">Increase in Booking Enquiry</div>
+            </div>
+            <!-- Card 3 -->
+            <div class="impact-card">
+                <div class="impact-icon dark-green">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="12" y1="19" x2="12" y2="5"></line>
+                        <polyline points="5 12 12 5 19 12"></polyline>
+                    </svg>
+                </div>
+                <div class="impact-metric dark-green-text" data-start="1" data-end="14">1%</div>
+                <div class="impact-subtitle">Increase in Conversion</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- KEY LEARNINGS -->
+    <section class="section">
+        <h2 class="section-label">Key Learnings</h2>
+        <ul class="bullet-list">
+            <li><strong>Real user behavior</strong> is often different from development assumptions.</li>
+            <li><strong>UX decisions</strong> should balance both <strong>business goals</strong> and <strong>user needs</strong>.</li>
+            <li><strong>Google Ads insights</strong> helped uncover real drop-off points and user intent patterns.</li>
+            <li><strong>Discoverability</strong> and <strong>desirability</strong> both play important roles in user experience.</li>
+            <li>Sometimes <strong>increasing interaction cost intentionally</strong> can improve clarity and conversions.</li>
+            <li><strong>Mobile-first design</strong> became critical after identifying that most traffic came from phones.</li>
+            <li><strong>Visual storytelling</strong> and emotional design can influence first-time users more effectively than information-heavy layouts.</li>
+            <li><strong>Technical and business constraints</strong> significantly shape real-world UX decisions.</li>
+            <li>UX is not only about usability — it is also about <strong>improving product outcomes and business impact.</strong></li>
+        </ul>
+    </section>
+
+    <!-- CLOSING CTA -->
+    <section class="closing-cta-section">
+        <div class="closing-cta-bg"></div>
+        <div class="closing-cta-content fade-up-element">
+            <h2 class="closing-dialogue">
+                "If you're looking for a designer who understands that UX is not just about creating visually appealing screens, but about <strong>solving real business problems</strong> and creating <strong>measurable impact</strong> — then I would love to be part of your team."
+            </h2>
+            <p class="closing-support">
+                I enjoy building experiences where user needs, business goals, and product thinking work together to create meaningful outcomes.
+            </p>
+            <a href="mailto:prayashsharma2002@gmail.com" class="closing-btn">Let’s Create Impact Together</a>
+        </div>
+    </section>
+
     <footer>
         &copy; Prayash Portfolio — UX Case Study
     </footer>
 
+    <!-- FAB to scroll to top -->
+    <button class="fab" id="scrollTopFab" onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
+        aria-label="Scroll to top">
+        <svg viewBox="0 0 24 24">
+            <path d="M12 19V5M5 12l7-7 7 7" />
+        </svg>
+    </button>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Reveal cards with staggered fade-in
+                        const cards = entry.target.querySelectorAll('.impact-card');
+                        cards.forEach((card, index) => {
+                            setTimeout(() => {
+                                card.classList.add('visible');
+                            }, index * 150); // Staggered fade in
+                        });
+                        
+                        // Wait a bit before counting animation
+                        setTimeout(() => {
+                            const metrics = entry.target.querySelectorAll('.impact-metric');
+                            metrics.forEach(metric => {
+                                const start = parseInt(metric.getAttribute('data-start'));
+                                const end = parseInt(metric.getAttribute('data-end'));
+                                const duration = 2000; // 2 seconds
+                                let startTime = null;
+                                
+                                const step = (timestamp) => {
+                                    if (!startTime) startTime = timestamp;
+                                    const progress = Math.min((timestamp - startTime) / duration, 1);
+                                    
+                                    // easeOutQuart curve for very smooth deceleration
+                                    const easeProgress = 1 - Math.pow(1 - progress, 4);
+                                    const current = start + (end - start) * easeProgress;
+                                    
+                                    metric.innerText = Math.round(current) + '%';
+                                    
+                                    if (progress < 1) {
+                                        window.requestAnimationFrame(step);
+                                    } else {
+                                        metric.innerText = end + '%';
+                                    }
+                                };
+                                window.requestAnimationFrame(step);
+                            });
+                        }, 400); // 400ms delay after section becomes visible
+                        
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            const impactSection = document.getElementById('business-impact-section');
+            if(impactSection) {
+                observer.observe(impactSection);
+            }
+
+            // Generic fade-up observer
+            const fadeUpObserver = new IntersectionObserver((entries, fadeObserver) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        fadeObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.2 });
+            
+            document.querySelectorAll('.fade-up-element').forEach(el => {
+                fadeUpObserver.observe(el);
+            });
+        });
+
+        window.addEventListener('scroll', function () {
+            const fab = document.getElementById('scrollTopFab');
+            const problemStatement = document.getElementById('problem-statement');
+
+            if (problemStatement) {
+                // Show FAB once we scroll past the problem statement section
+                const triggerPoint = problemStatement.offsetTop;
+                if (window.scrollY > triggerPoint) {
+                    fab.classList.add('show');
+                } else {
+                    fab.classList.remove('show');
+                }
+            }
+        });
+    </script>
 </body>
 
 </html>
